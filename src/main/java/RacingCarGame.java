@@ -24,6 +24,7 @@ public class RacingCarGame {
 	}
 
 	public void playRacingCarGame() {
+		System.out.print("\n실행 결과\n");
 		for(int cnt=0; cnt<moveCount.getMoveCount(); cnt++) {
 			cars.play();
 			cars.report();

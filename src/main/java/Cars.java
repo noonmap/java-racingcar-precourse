@@ -48,14 +48,22 @@ public class Cars {
 
 	public String getWinners() {
 		sortCars();
+		Car maxProgressCar = cars.get((int)cars.size()-1);
 		ArrayList<String> winnerList = new ArrayList<String>();
 		for(Car car : cars) {
-			winnerList.add(car.compareProgress( cars.get((int)cars.size()-1) ));
+			addWinner(winnerList, maxProgressCar, car);
 		}
 		String winners = String.join(",", winnerList);
 		return winners;
 	}
 	
+	private void addWinner(ArrayList<String> winnerList, Car maxCar, Car car) {
+		if(car.matchProgress(maxCar) == true) {
+			winnerList.add(car.getName());
+		}
+		
+	}
+
 	public void play() {
 		for(Car car : this.cars) {
 			car.play(getRandomNumber());

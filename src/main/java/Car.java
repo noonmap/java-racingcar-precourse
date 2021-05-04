@@ -33,10 +33,10 @@ public class Car {
 		System.out.println(getName() + " : " + getProgress());
 	}
 
-	public String compareProgress(Car anotherCar) {
+	public boolean matchProgress(Car anotherCar) {
 		if(this.getProgress().length() == anotherCar.getProgress().length()) {
-			return this.getName();
+			return true;
 		}
-		return null;
+		return false;
 	}
 }
