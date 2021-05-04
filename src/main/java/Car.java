@@ -32,4 +32,11 @@ public class Car {
 	public void report() {
 		System.out.println(getName() + " : " + getProgress());
 	}
+
+	public String compareProgress(Car anotherCar) {
+		if(this.getProgress().length() == anotherCar.getProgress().length()) {
+			return this.getName();
+		}
+		return null;
+	}
 }
