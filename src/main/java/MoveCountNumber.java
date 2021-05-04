@@ -9,9 +9,12 @@ public class MoveCountNumber {
 		validNo(no);
 		this.count = no;
 	}
-	public void validNo(int no) throws RuntimeException{
+	private void validNo(int no) throws RuntimeException{
 		if(no < MIN_COUNT || no > MAX_COUNT) {
 			throw new RuntimeException("이동 횟수는 10회 이내의 숫자여야 합니다.");
 		}
+	}
+	public int getMoveCount() {
+		return this.count;
 	}
 }
