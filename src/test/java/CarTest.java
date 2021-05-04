@@ -16,6 +16,20 @@ class CarTest {
 		car = new Car("test");
 	}
 	@Test
+	@DisplayName("자동차 이름 길이 검증")
+	void 자동차_이름_길이_검증() {
+		assertAll(() -> {
+			new Car("1");
+			new Car("55555");
+		});
+		assertThrows(RuntimeException.class, ()-> {
+			new Car("");
+		});
+		assertThrows(RuntimeException.class, ()-> {
+			new Car("666666");
+		});
+	}
+	@Test
 	@DisplayName("입력 숫자에 따른 CarStatus 검증")
 	void 입력_숫자에_따른_CarStatus_검증() {
 		assertEquals(car.getCarStatus(0), CarStatus.STOP);

@@ -1,25 +1,22 @@
 package main.java;
 
 public class Car {
-	private String name;
+	private CarName name;
 	private String progress;
-	
-	private void report() {
-		System.out.println(getName() + " : " + getProgress());
+
+	private void increaseProgress() {
+		this.progress += "-";
 	}
 	
 	public Car(String name) {
-		this.name = name;
+		this.name = new CarName(name);
 		this.progress = "";
 	}
 	public String getName() {
-		return this.name;
+		return name.getCarName();
 	}
 	public String getProgress() {
 		return this.progress;
-	}
-	public void increaseProgress() {
-		this.progress += "-";
 	}
 	public CarStatus getCarStatus(int no) {
 		if(no <= 3) {
@@ -31,6 +28,8 @@ public class Car {
 		if(getCarStatus(no) == CarStatus.FORWARD) {
 			increaseProgress();
 		}
-		report();
+	}
+	public void report() {
+		System.out.println(getName() + " : " + getProgress());
 	}
 }
