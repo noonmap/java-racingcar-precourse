@@ -12,7 +12,7 @@
 - 전진하는 조건은 0에서 9사이에서 random값을 구한 후 random값이 4이상일 경우 전진하고, 3이하의 값이면 멈춘다.
 - 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
     
-## 기능 단위 분리하기
+## 기능 세분화 하기
 - **Input**
     - 사용자 입력 → 이동 횟수
         - 임의로 10개 이하로 제한한다.
@@ -33,6 +33,37 @@
         - 가장 goCnt가 큰 자동차들을 출력한다.
 - **Output**
     - 가장 goCnt가 큰 자동차(1개 이상)를 출력한다.
+
+## 기능 단위 클래스 구분하기
+
+- MoveCountNumber
+    - 이동 횟수를 의미
+    - 10 이하의 정수
+- CarStatus
+    - Car의 STOP or FORWARD 이동 상태
+- CarName
+    - 5자 이내의 자동차 이름 String
+- Car
+    - 규칙에 따른 play
+        - no ≤ 3 → STOP
+        - no ≥ 4 → FORWARD, progress += "-"
+    - report
+        - CarName + progress("-") 출력
+- Cars
+    - CarNames string을 입력받은 후 ","에 따라 분리해서 Car 객체를 생성
+    - 규칙에 따른 play
+        - getRandomNumber()
+        - Car.play()
+    - winner 구하기
+        - sort: progress길이에 따라 Car 정렬
+        - 정렬된 Car 중 가장 Progress가 많이 진행된 자동차들을 고르기
+    - report
+        - 각 Car의 report
+- RacingCarGame
+    - 사용자 입력 : 자동차 이름
+    - 사용자 입력 : 이동 횟수
+    - print result
+        - 가장 progress가 긴 Car들을 출력
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
